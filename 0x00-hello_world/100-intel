@@ -1,10 +1,2 @@
 #!/bin/bash
-
-# Set variable for CFILE
-cfile="$CFILE"
-
-# Set variable for output file
-output_file="${CFILE%.c}.s"
-
-# Compile the C file to generate assembly code
-gcc -S -masm=intel "$cfile" -o "$output_file"
+gcc -S -masm=intel "$CFILE" -o "{$CFILE%.c}.s"
