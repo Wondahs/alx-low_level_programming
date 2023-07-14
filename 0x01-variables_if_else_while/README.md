@@ -1,1 +1,1 @@
-Learning variables, if, else, while
+Learning variables, if, else, and while
