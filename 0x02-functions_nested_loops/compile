@@ -1,0 +1,29 @@
+#!/bin/bash
+
+compile_files() {
+    files=("$@")                          # Store all input files in an array
+
+    # Compile and link the files into an executable with the specified flags
+    gcc -Wall -pedantic -Werror -Wextra -std=gnu89 "${files[@]}"
+
+    local exit_code=$?                    # Capture the exit code
+
+    if [[ $exit_code -eq 0 ]]; then
+        echo "Compilation successful. Executable created."
+    else
+        echo "Compilation failed with exit code: $exit_code"
+    fi
+}
+
+# Extract the command-line arguments
+files=("$@")
+
+# Check if any input files are provided
+if [[ ${#files[@]} -eq 0 ]]; then
+    echo "Usage: ./compile_files.sh <file1> [<file2> <file3> ...]"
+    exit 1
+fi
+
+# Compile the files
+compile_files "${files[@]}"
+
