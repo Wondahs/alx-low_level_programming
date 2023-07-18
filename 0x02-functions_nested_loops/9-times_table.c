@@ -1,4 +1,4 @@
-#include "main.h"
+#include <stdio.h>
 /**
  *times_table - prints multiplication table from 0 - 9
  */
@@ -11,21 +11,19 @@ void times_table(void)
 		for (j = 0; j <= 9; j++)
 		{
 			k = (i * j);
-			if (k < 10)
+			if (j == 0)
 			{
-				_putchar('0' + (i * j));
+				printf("%d, ", k);
 			}
 			else
 			{
-				_putchar('0' + k / 10);
-				_putchar('0' + k % 10);
-			}
-			if (j != 9)
-			{
-				_putchar(',');
-				_putchar(' ');
+				printf("%2d", k);
+				if (j != 9)
+				{
+					printf(", ");
+				}
 			}
 		}
-		_putchar('\n');
+		printf("\n");
 	}
 }
