@@ -19,6 +19,6 @@ int main(void)
 		}
 	}
 
-	printf("The largest prime factor is %d\n", largest_prime);
+	printf("%d\n", largest_prime);
 	return (0);
 }
