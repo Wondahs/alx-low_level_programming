@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "main.h"
 /**
  *more_numbers - prints 1 - 14 10 times
@@ -15,5 +16,4 @@ void more_numbers(void)
 		}
 		_putchar('\n');
 	}
-	_putchar('\n');
 }
