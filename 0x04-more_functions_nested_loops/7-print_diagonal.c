@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  *print_diagonal - print diagonal
- *@c: spaces
+ *@n: spaces
  */
 void print_diagonal(int n)
 {
