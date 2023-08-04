@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Specify the source directory containing C files
+source_dir="."
+
+# Create a directory for object files if it doesn't exist
+mkdir -p objects
+
+# Loop through each C file in the source directory
+for c_file in "$source_dir"/*.c; do
+    if [ -f "$c_file" ]; then
+        # Extract the base file name (without extension) from the full path
+        base_name=$(basename -s .c "$c_file")
+        
+        # Compile the C file into an object file in the 'objects' directory
+        gcc -c "$c_file" -o "objects/$base_name.o"
+        
+        # Append the object file name to an output file
+        echo "objects/$base_name.o" >> object_list.txt
+    fi
+done
+
+echo "Compilation complete."
