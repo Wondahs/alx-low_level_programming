@@ -3,17 +3,17 @@
 
 /**
  * count_words - Counts the number of words in a string.
- * @str: The input string to evaluate.
+ * @s: The string to evaluate.
  *
  * Return: The number of words.
  */
-int count_words(char *str)
+int count_words(char *s)
 {
 	int flag = 0, c, word_count = 0;
 
-	for (c = 0; str[c] != '\0'; c++)
+	for (c = 0; s[c] != '\0'; c++)
 	{
-		if (str[c] == ' ')
+		if (s[c] == ' ')
 			flag = 0;
 		else if (flag == 0)
 		{
@@ -26,7 +26,7 @@ int count_words(char *str)
 }
 
 /**
- * strtow - Splits a string into an array of words.
+ * strtow - Splits a string into words.
  * @str: The string to split.
  *
  * Return: A pointer to an array of strings (Success),
@@ -34,21 +34,20 @@ int count_words(char *str)
  */
 char **strtow(char *str)
 {
-	char **word_matrix, *tmp;
-	int i, matrix_index = 0, len = 0, words = 0, c = 0, start = 0, end = 0;
-	int j;
+	char **matrix, *tmp;
+	int i, index = 0, len = 0, word_count, c = 0, start, end;
 
-	while (str[len] != '\0')
+	while (*(str + len))
 		len++;
-	words = count_words(str);
-	if (words == 0)
+	word_count = count_words(str);
+	if (word_count == 0)
 		return (NULL);
 
-	word_matrix = (char **)malloc(sizeof(char *) * (words + 1));
-	if (word_matrix == NULL)
+	matrix = (char **)malloc(sizeof(char *) * (word_count + 1));
+	if (matrix == NULL)
 		return (NULL);
 
-	for (i = 0; i < len; i++)
+	for (i = 0; i <= len; i++)
 	{
 		if (str[i] == ' ' || str[i] == '\0')
 		{
@@ -58,11 +57,11 @@ char **strtow(char *str)
 				tmp = (char *)malloc(sizeof(char) * (c + 1));
 				if (tmp == NULL)
 					return (NULL);
-				for (j = start; j < end; j++)
-					tmp[j - start] = str[j];
-				tmp[c] = '\0';
-				word_matrix[matrix_index] = tmp;
-				matrix_index++;
+				while (start < end)
+					*tmp++ = str[start++];
+				*tmp = '\0';
+				matrix[index] = tmp - c;
+				index++;
 				c = 0;
 			}
 		}
@@ -70,7 +69,7 @@ char **strtow(char *str)
 			start = i;
 	}
 
-	word_matrix[matrix_index] = NULL;
+	matrix[index] = NULL;
 
-	return (word_matrix);
+	return (matrix);
 }
