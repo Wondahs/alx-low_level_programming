@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Perform git add .
+git add .
+
+# Prompt user for commit message
+echo "Enter commit message:"
+read commit_message
+
+# Perform git commit -m
+git commit -m "$commit_message"
+
+# Perform git push
+git push
+
