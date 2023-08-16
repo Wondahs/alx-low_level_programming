@@ -1,10 +1,10 @@
-#include <stdio.h>
+
 #include "function_pointers.h"
 
 /**
  *print_name - A function that prints a name
  *@name: Name to print
- *@f: Fuction pointer to name printer
+ *@f: Function pointer to name printer
  *
  *Return: Nothing
  */
