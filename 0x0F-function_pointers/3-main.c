@@ -1,6 +1,7 @@
 #include "3-calc.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <stddef.h>
 
 /**
  *main - Main program for calculator program
@@ -9,7 +10,7 @@
  *
  *Return: 0
  */
-int main(argc, argv[])
+int main(int argc, char *argv[])
 {
 	int num1, num2;
 	char *op;
