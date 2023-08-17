@@ -2,9 +2,9 @@
 #include <stdarg.h>
 
 /**
- * print_all - Custom printf-like function to print values based on format specifiers.
+ * print_all - Printf-like function to print values based on format specifiers
  * @format: A string containing format specifiers for values to be printed.
- *          Supported specifiers: 'c' (char), 'i' (int), 'f' (float), 's' (string).
+ * Supported specifiers: 'c' (char), 'i' (int), 'f' (float), 's' (string).
  *          Any other characters are ignored.
  *          Use format(i) to specify the argument index.
  * @...: Values to be printed based on the format specifiers.
@@ -32,6 +32,7 @@ void print_all(const char * const format, ...)
 			case 's':
 			{
 				char *string = va_arg(args, char *);
+
 				if (!string)
 					string = "(nil)";
 				printf("%s", string);
