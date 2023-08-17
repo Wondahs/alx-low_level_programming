@@ -28,16 +28,18 @@ int main(int argc, char *argv[])
 	}
 
 	arr = (char *)main;
+	int last_index = bytes - 1;
 
 	for (i = 0; i < bytes; i++)
 	{
-		if (i == bytes - 1)
+		if (i == last_index)
 		{
 			printf("%02hhx\n", arr[i]);
-			break;
 		}
-		printf("%02hhx ", arr[i]);
+		else
+		{
+			printf("%02hhx ", arr[i]);
+		}
 	}
 	return (0);
 }
-
