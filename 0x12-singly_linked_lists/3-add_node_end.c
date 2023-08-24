@@ -38,22 +38,32 @@ char *_strdup(char *s)
 	dup[i] = '\0';
 	return (dup);
 }
+
 /**
- *add_node - Adds a new node at the beginning of a list_t list
+ *add_node_end -  Adds a new node at the end of a list_t list
  *@head: Current head
  *@str: String to be added to node
  *
  *Return: The address of the new element, or NULL if it failed
  */
-list_t *add_node(list_t **head, const char *str)
+list_t *add_node_end(list_t **head, const char *str)
 {
-	list_t *newNode = (list_t *)malloc((sizeof(list_t)));
+	list_t *endNode = (list_t *)malloc(sizeof(list_t));
+	list_t *current = *head;
 
-	if (newNode == NULL)
+	if (endNode == NULL)
 		return (NULL);
-	newNode->str = _strdup((char *)str);
-	newNode->len = _strlen(newNode->str);
-	newNode->next = *head;
-	*head = newNode;
-	return (newNode);
+	endNode->str = _strdup((char *)str);
+	endNode->len = _strlen(endNode->str);
+	endNode->next = NULL;
+
+	if (*head == NULL)
+		*(head) = endNode;
+	else
+	{
+		while (current->next != NULL)
+			current = current->next;
+		current->next = endNode;
+	}
+	return (endNode);
 }
