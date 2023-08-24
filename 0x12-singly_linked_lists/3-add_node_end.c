@@ -34,12 +34,15 @@ list_t *add_node_end(list_t **head, const char *str)
 	endNode->next = NULL;
 
 	if (*head == NULL)
+	{
 		*(head) = endNode;
+		return (endNode);
+	}
 	else
 	{
 		while (current->next != NULL)
 			current = current->next;
 		current->next = endNode;
 	}
-	return (endNode);
+	return (*);
 }
