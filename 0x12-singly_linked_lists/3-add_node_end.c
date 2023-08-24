@@ -16,30 +16,6 @@ int _strlen(char *s)
 }
 
 /**
- *_strdup - Duplicates string
- *@s: Input string
- *
- *Return: Duplicated string
- */
-char *_strdup(char *s)
-{
-	int i, len = 0;
-	char *dup;
-
-	while (s[len] != '\0')
-	{
-		len++;
-	}
-	dup = (char *)malloc(len + 1);
-	for (i = 0; i <= len; i++)
-	{
-		dup[i] = s[i];
-	}
-	dup[i] = '\0';
-	return (dup);
-}
-
-/**
  *add_node_end -  Adds a new node at the end of a list_t list
  *@head: Current head
  *@str: String to be added to node
@@ -53,7 +29,7 @@ list_t *add_node_end(list_t **head, const char *str)
 
 	if (endNode == NULL)
 		return (NULL);
-	endNode->str = _strdup((char *)str);
+	endNode->str = strdup((char *)str);
 	endNode->len = _strlen(endNode->str);
 	endNode->next = NULL;
 
