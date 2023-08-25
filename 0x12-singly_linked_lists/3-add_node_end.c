@@ -30,6 +30,8 @@ list_t *add_node_end(list_t **head, const char *str)
 	if (!endNode)
 		return (NULL);
 	endNode->str = strdup(str);
+	if (endNode->str == NULL)
+		return (NULL);
 	endNode->len = _strlen(endNode->str);
 	endNode->next = NULL;
 
