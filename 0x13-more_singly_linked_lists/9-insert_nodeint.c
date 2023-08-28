@@ -4,7 +4,7 @@
  *insert_nodeint_at_index - Inserts node at given position
  *@head: Head node
  *@idx: Position to insert node
- *@int: Data to insert
+ *@n: Data to insert
  *
  *Return: Address of new node or NULL if it failed
  */
