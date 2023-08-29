@@ -1,28 +1,56 @@
 #include "lists.h"
 #include <stdio.h>
-#include <stdlib.h>
+
+size_t looped_listint_len(const listint_t *head);
+size_t print_listint_safe(const listint_t *head);
 
 /**
- * detect_loop - Detects a loop in a linked list
- * @head: Pointer to the head of the linked list
+ * looped_listint_len - Counts the number of unique nodes
+ *                      in a looped listint_t linked list.
+ * @head: A pointer to the head of the listint_t to check.
  *
- * Return: The node where the loop starts, or NULL if no loop
+ * Return: If the list is not looped - 0.
+ *         Otherwise - the number of unique nodes in the list.
  */
-listint_t *detect_loop(listint_t *head)
+size_t looped_listint_len(const listint_t *head)
 {
-	listint_t *tortoise = head;
-	listint_t *hare = head;
+	const listint_t *slow_ptr;
+	const listint_t *fast_ptr;
+	size_t count = 1;
 
-	while (hare && hare->next)
+	if (!head || !(head->next))
+		return (0);
+
+	slow_ptr = head->next;
+	fast_ptr = (head->next)->next;
+
+	while (fast_ptr)
 	{
-		tortoise = tortoise->next;
-		hare = hare->next->next;
+		if (slow_ptr == fast_ptr)
+		{
+			slow_ptr = head;
+			while (slow_ptr != fast_ptr)
+			{
+				count++;
+				slow_ptr = slow_ptr->next;
+				fast_ptr = fast_ptr->next;
+			}
 
-		if (tortoise == hare)
-			return (tortoise); /* Loop detected, return the meeting point */
+			slow_ptr = slow_ptr->next;
+			while (slow_ptr != fast_ptr)
+			{
+				count++;
+				slow_ptr = slow_ptr->next;
+			}
+
+			return (count);
+		}
+
+		slow_ptr = slow_ptr->next;
+		fast_ptr = (fast_ptr->next)->next;
 	}
 
-	return (NULL); /* No loop detected */
+	return (0);
 }
 
 /**
@@ -33,37 +61,31 @@ listint_t *detect_loop(listint_t *head)
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	listint_t *copy = NULL;
-	listint_t *loop_node;
-	size_t nodes = 0;
+	size_t nodes;
+	size_t index = 0;
 
-	if (head)
-		copy = (listint_t *)head;
+	nodes = looped_listint_len(head);
 
-	loop_node = detect_loop(copy);
-
-	if (loop_node == NULL)
+	if (nodes == 0)
 	{
-		while (head != NULL)
+		while (head)
 		{
 			printf("[%p] %d\n", (void *)head, head->n);
 			head = head->next;
-			nodes++;
 		}
 	}
 	else
 	{
 		const listint_t *current = head;
 
-		while (current != loop_node)
+		while (index < nodes)
 		{
 			printf("[%p] %d\n", (void *)current, current->n);
 			current = current->next;
-			nodes++;
+			index++;
 		}
 
-		printf("-> [%p] %d\n", (void *)loop_node, loop_node->n);
-		nodes++;
+		printf("-> [%p] %d\n", (void *)current, current->n);
 	}
 
 	return (nodes);
