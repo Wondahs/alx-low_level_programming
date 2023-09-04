@@ -3,12 +3,15 @@
 int errors(int n, const char *c);
 
 /**
+ *main - Entry point
+ *@argc: Argument count
+ *@argv: Pointer to arguments
  *
  *
- *
- *
- *
- *
+ *Return: 0 if successful, 97 if wrong number of commands given,
+ *98 if source file cant be read or opened
+ *99 is target file cant be opened or written
+ *100 if file cant be closed
  */
 int main(int argc, char *argv[])
 {
@@ -37,12 +40,10 @@ int main(int argc, char *argv[])
 			break;
 		if (bytesRead < 0)
 			errors(98, argv[1]);
-		written = write(fileTo, buffer, sizeof(buffer));
+		written = write(fileTo, buffer, bytesRead);
 		if (written == -1)
 			errors(99, argv[2]);
 	}
-	close(fileFrom);
-	close(fileTo);
 	if (close(fileFrom) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fileFrom);
@@ -58,12 +59,12 @@ int main(int argc, char *argv[])
 
 
 /**
+ *errors - Handles errors
+ *@n: error code
+ *@c: filename
  *
  *
- *
- *
- *
- *
+ *Return: Resoective errors
  */
 int errors(int n, const char *c)
 {
