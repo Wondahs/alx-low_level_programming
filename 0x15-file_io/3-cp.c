@@ -24,6 +24,10 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
+	if (argv[1] == NULL)
+		errors(98, argv[1]);
+	if (argv[2] == NULL)
+		errors(99, argv[2]);
 
 	fileFrom = open(argv[1], O_RDONLY);
 	if (fileFrom == -1)
@@ -38,10 +42,10 @@ int main(int argc, char *argv[])
 		bytesRead = read(fileFrom, buffer, sizeof(buffer));
 		if (bytesRead == 0)
 			break;
-		if (bytesRead < 0)
+		if (bytesRead == -1 || fileFrom == -1)
 			errors(98, argv[1]);
 		written = write(fileTo, buffer, bytesRead);
-		if (written == -1)
+		if (written == -1 || fileTo == -1)
 			errors(99, argv[2]);
 	}
 	if (close(fileFrom) == -1)
