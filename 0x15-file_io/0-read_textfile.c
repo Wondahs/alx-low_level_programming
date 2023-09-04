@@ -10,7 +10,7 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	int text = open(filename, O_RDONLY);
+	ssize_t text = open(filename, O_RDONLY);
 	ssize_t written;
 	ssize_t bytesRead;
 	char *buffer;
@@ -20,7 +20,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (text == -1)
 		return (0);
 
-	buffer = malloc(letters);
+	buffer = malloc(sizeof(char) * letters);
 	if (buffer == NULL)
 	{
 		close(text);
@@ -34,7 +34,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		free(buffer);
 		return (0);
 	}
-	written = write(STDOUT_FILENO, buffer, letters);
+	written = write(STDOUT_FILENO, buffer, bytesRead);
 
 	close(text);
 	free(buffer);
