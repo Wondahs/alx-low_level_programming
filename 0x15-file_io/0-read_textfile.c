@@ -32,14 +32,14 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	{
 		close(text);
 		free(buffer);
-		return(0);
+		return (0);
 	}
 	written = write(STDOUT_FILENO, buffer, letters);
 
 	close(text);
 	free(buffer);
 
-	if (written == -1)
+	if (written == -1 || written != bytesRead)
 	{
 		return (0);
 	}
