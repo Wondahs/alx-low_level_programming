@@ -83,7 +83,7 @@ int errors(int n, const char *c)
 
 		case 99:
 		{
-			dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", c);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", c);
 			exit(99);
 			break;
 		}
