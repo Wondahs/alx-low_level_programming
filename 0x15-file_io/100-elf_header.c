@@ -38,6 +38,7 @@ void checkElf(unsigned char *e_ident)
 void printElfMagic(unsigned char *e_ident)
 {
 	int index;
+
 	printf(" Magic: ");
 	for (index = 0; index < EI_NIDENT; index++)
 	{
