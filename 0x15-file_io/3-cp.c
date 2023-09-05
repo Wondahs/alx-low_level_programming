@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 
 	fileTo = open(argv[2], O_CREAT | O_RDWR | O_TRUNC, 0664);
 	if (fileTo == -1)
-		errors(99, argv[2]);
+		return (0);
 
 	while (1)
 	{
