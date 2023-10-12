@@ -9,7 +9,7 @@
 int main(void)
 {
 	char *pass = malloc(sizeof(char) * 5);
-	char c[4] = {1, 4, 7, '\0'}, run[100];
+	char c[4] = {'1', '4', '7', '\0'}, run[100];
 	int i;
 
 	for (i = 0; c[i]; i++)
