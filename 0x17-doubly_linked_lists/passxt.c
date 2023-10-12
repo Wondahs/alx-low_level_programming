@@ -9,7 +9,7 @@
 int main(void)
 {
 	char *pass = malloc(sizeof(char) * 5);
-	char c[14] = {'e', 'n', ' ', 'C', ' ', 'P', 'y', 'f', 'o', ' ', 'n', 'e', 'Z', '\0'}, run[100];
+	char c[4] = {1, 4, 7, '\0'}, run[100];
 	int i;
 
 	for (i = 0; c[i]; i++)
@@ -17,7 +17,7 @@ int main(void)
 
 	pass[i] = '\0';
 
-	sprintf(run, "echo %s > 100-password", pass);
+	sprintf(run, "echo %s > 102-result", pass);
 	system(run);
 
 	return (0);
