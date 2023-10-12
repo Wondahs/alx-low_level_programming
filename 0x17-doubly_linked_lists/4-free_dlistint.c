@@ -20,6 +20,7 @@ void free_dlistint(dlistint_t *head)
 	{
 		free(current);
 		current = NULL;
+		return;
 	}
 	while (current->next != NULL)
 	{
