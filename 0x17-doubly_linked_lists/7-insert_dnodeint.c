@@ -37,7 +37,7 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	dlistint_t *current, *temp, *newNode;
 
 	if (!idx || !n)
-		return (NULL);
+		return (*h);
 
 	current = *h;
 	length = check_length(current);
