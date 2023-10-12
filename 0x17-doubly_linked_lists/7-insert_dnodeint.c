@@ -14,7 +14,7 @@ int check_length(dlistint_t *h)
 	if (h == NULL)
 		return (0);
 	current = h;
-	while (current->next)
+	while (current)
 	{
 		length++;
 		current = current->next;
