@@ -1,12 +1,14 @@
 #include "search_algos.h"
 
 /**
+ *jump_list - searches for a value in a sorted list of integers
+ * using the Jump search algorithm.
  *@list: is a pointer to the head of the list to search in.
  *@size: is the number of nodes in list.
  *@value: is the value to search for.
  *
  *
- * Return - value is not present in head or if head is NULL,
+ *Return: value is not present in head or if head is NULL,
  * function will return NULL
  */
 listint_t *jump_list(listint_t *list, size_t size, int value)
@@ -14,8 +16,8 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 	size_t step, low_index = 0, high;
 	listint_t *current = NULL, *low = NULL, *end = NULL;
 
-	if (list == NULL)
-		return NULL;
+	if (list == NULL || size == 0)
+		return (NULL);
 
 	step = sqrt(size);
 	high = step;
@@ -59,9 +61,10 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
  * @size: Size of array
  * @value: Value to search for
  *
- * Return - Index of value or NULL if value not found.
+ * Return: Index of value or NULL if value not found.
 */
-listint_t *finish_jump_list(listint_t *low, size_t low_index, size_t size, int value)
+listint_t *finish_jump_list(listint_t *low,
+		size_t low_index, size_t size, int value)
 {
 	while (low_index < size && low)
 	{

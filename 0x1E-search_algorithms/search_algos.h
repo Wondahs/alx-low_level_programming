@@ -31,6 +31,7 @@ listint_t *create_list(int *array, size_t size);
 void free_list(listint_t *list);
 void print_list(const listint_t *list);
 listint_t *jump_list(listint_t *list, size_t size, int value);
-listint_t *finish_jump_list(listint_t *low, size_t low_index, size_t size, int value);
+listint_t *finish_jump_list(listint_t *low,
+		size_t low_index, size_t size, int value);
 
 #endif /*SEARCH_ALGOS_H*/
