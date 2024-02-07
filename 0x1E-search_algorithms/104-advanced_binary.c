@@ -24,10 +24,10 @@ int advanced_binary(int *array, size_t size, int value)
  * @left: Index of starting point
  * @right: Index of ending point
  * @value: value to search for
- * 
+ *
  * Return: Index of value,
  * -1 if value cannot be found.
-*/
+ */
 int recursive_binary(int *array, size_t left, size_t right, int value)
 {
 	size_t index, mid;
